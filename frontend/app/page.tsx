@@ -1,33 +1,20 @@
-import styles from './page.module.css'
-import EditSVG from '@/assets/edit.svg'
-import Menhera from '@/assets/menhera.png'
-import Image from 'next/image'
+import SplineLoading from './components/SplineLoading';
 
 export default function Home() {
-	return (
-		<div className={styles.wrapper}>
-			<main className={styles.main}>
-				<div className={styles.header}>
-					<h1 className={styles.headerText}>NextJS + Electron Boilerplate</h1>
-					<h4 className={styles.headerSubText}>
-						That one boilerplate you couldn{"'"}t find, until now.
-					</h4>
-				</div>
-				<Image
-					src={Menhera.src}
-					className={styles.menhera}
-					alt="menhera"
-					width={200}
-					height={200}
-				/>
-				<div className={styles.note}>
-					<EditSVG />
-					Get started by editting frontend/app/page.tsx
-				</div>
-				<footer className={styles.footer}>
-					{'<'}/{'>'} with ♥
-				</footer>
-			</main>
-		</div>
-	)
+  return (
+    <div className="flex flex-col h-full">
+      <main className="flex-grow flex flex-col items-center justify-center">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-800">Perceptron Desktop</h1>
+          <h4 className="text-xl text-gray-600">
+            Currently under development.
+          </h4>
+        </div>
+        <SplineLoading />
+      </main>
+      <footer className="p-4 bg-gray-800 text-white text-center w-full">
+        {'<'}3 with ♥
+      </footer>
+    </div>
+  );
 }

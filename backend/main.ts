@@ -54,14 +54,16 @@ const spawnAppWindow = async () => {
 	const PRELOAD_PATH = path.join(__dirname, 'preload.js')
 
 	appWindow = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 1280,
+		height: 800,
+		minWidth: 1280,  // Set minimum width
+		minHeight: 800, // Set minimum height
 		icon: getAssetPath('icon.png'),
 		show: false,
 		webPreferences: {
-			preload: PRELOAD_PATH,
+		  preload: PRELOAD_PATH,
 		},
-	})
+	  })
 
 	appWindow.loadURL(
 		electronIsDev
@@ -72,7 +74,7 @@ const spawnAppWindow = async () => {
 	appWindow.setMenu(null)
 	appWindow.show()
 
-	if (electronIsDev) appWindow.webContents.openDevTools({ mode: 'right' })
+	// if (electronIsDev) appWindow.webContents.openDevTools({ mode: 'right' })
 
 	appWindow.on('closed', () => {
 		appWindow = null

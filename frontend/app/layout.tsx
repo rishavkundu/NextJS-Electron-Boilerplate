@@ -1,19 +1,26 @@
-import './globals.css'
+import './globals.css';
+import MsalProvider from './components/MsalProvider';
+import React from 'react';
+import ClientLayout from './components/ClientLayout';
 
 export const metadata = {
-	title: 'NextJS + Electron Boilerplate',
-	description:
-		'A neat boilerplate for building Electron apps, with NextJS at the frontend and pre-configured with a bunch of handy development tools.',
-}
+  title: 'Perceptron Desktop 1.0',
+  description: 'Perceptron Desktop Development Server',
+};
 
 export default function RootLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode
+  children: React.ReactNode;
 }) {
-	return (
-		<html lang="en">
-			<body>{children}</body>
-		</html>
-	)
+  return (
+    <html lang="en" className="h-full">
+      <body className="h-full">
+        <MsalProvider />
+        <ClientLayout>
+          {children}
+        </ClientLayout>
+      </body>
+    </html>
+  );
 }
