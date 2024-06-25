@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { Menu, Layout } from 'antd';
 import { 
   HomeOutlined, SoundOutlined, SettingOutlined, DashboardOutlined, 
-  LineChartOutlined, CodeOutlined, FileOutlined, PieChartOutlined,
-  MenuFoldOutlined, MenuUnfoldOutlined
+  LineChartOutlined, CodeOutlined, FileOutlined, PieChartOutlined
 } from '@ant-design/icons';
 import { MenuProps } from 'antd';
 import AniLogo from './AniLogo';

@@ -1,28 +1,35 @@
 {
 	"compilerOptions": {
 		"target": "es5",
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
 		"allowJs": true,
 		"skipLibCheck": true,
-		"strict": false, //will change
+		"strict": true, // Setting "strict" to true as per the second object
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,
-		"module": "esnext",
+		"module": "commonjs", // Setting "module" to "commonjs" as per the second object
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".", // The base URL is set to the current directory
+		"paths": {
+			"@/*": [
+				"./*"
+			]
+		},
 		"plugins": [
 			{
 				"name": "next"
 			}
-		],
-		"baseUrl": "./app",
-		"paths": {
-			"@/*": ["./*"]
-		}
+		]
 	},
 	"include": [
 		"context.d.ts",
@@ -35,5 +42,7 @@
 		"build/types/**/*.ts",
 		"customImageLoader.js"
 	],
-	"exclude": ["node_modules"]
+	"exclude": [
+		"node_modules"
+	]
 }

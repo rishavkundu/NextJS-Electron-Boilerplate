@@ -1,5 +1,4 @@
 import './globals.css';
-import MsalProvider from './components/MsalProvider';
 import React from 'react';
 import ClientLayout from './components/ClientLayout';
 
@@ -16,10 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="h-full">
-        <MsalProvider />
-        <ClientLayout>
-          {children}
-        </ClientLayout>
+          <ClientLayout>
+            {children}
+          </ClientLayout>
       </body>
     </html>
   );
