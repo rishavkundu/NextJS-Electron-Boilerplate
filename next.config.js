@@ -7,6 +7,8 @@ const nextConfig = {
 	images: {
 		unoptimized: true,
 	},
+	reactStrictMode: true,
+	transpilePackages: ['antd', '@ant-design/icons', '@ant-design/cssinjs', '@ctrl/tinycolor', '@ant-design/colors'],
 	// Configure SVGR
 	webpack(config) {
 		const fileLoaderRule = config.module.rules.find(rule =>
@@ -30,4 +32,4 @@ const nextConfig = {
 	},
 }
 
-export default nextConfig
+module.exports = nextConfig

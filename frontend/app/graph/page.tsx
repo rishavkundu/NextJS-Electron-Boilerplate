@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { getUserDetails } from '../../utils/GraphService';
+import React from 'react';
 
-const HomePage = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const userDetails = await getUserDetails();
-        setUser(userDetails);
-      } catch (error) {
-        console.error('Error fetching user details:', error);
-      }
-    };
-
-    fetchUserDetails();
-  }, []);
-
+const FilesPage: React.FC = () => {
   return (
-      <div>
-        <h1>Welcome to the Graph API Test</h1>
-        {user ? <pre>{JSON.stringify(user, null, 2)}</pre> : <p>Loading...</p>}
+    <main className="flex flex-col items-center justify-center min-h-screen">
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-gray-800">Perceptron Desktop</h1>
+        <h4 className="text-xl text-gray-600">
+          Files page
+        </h4>
       </div>
+      <footer className="mt-auto p-4 bg-gray-800 text-white text-center w-full">
+        {'<'}3 with ♥
+      </footer>
+    </main>
   );
-};
+}
 
-export default HomePage;
+export default FilesPage;

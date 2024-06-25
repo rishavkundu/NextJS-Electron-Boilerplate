@@ -18,6 +18,12 @@ interface SidebarProps {
   setCollapsed: (collapsed: boolean) => void;
 }
 
+interface SidebarProps {
+  theme?: 'light' | 'dark';
+  collapsed: boolean;
+  setCollapsed: (collapsed: boolean) => void;
+}
+
 const Sidebar: React.FC<SidebarProps> = ({ theme = 'dark', collapsed, setCollapsed }) => {
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);

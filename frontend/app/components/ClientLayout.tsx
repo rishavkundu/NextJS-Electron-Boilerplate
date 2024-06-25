@@ -1,41 +1,45 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Layout, Breadcrumb, theme } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Layout, theme } from 'antd';
 import Sidebar from './Sidebar';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Sider, Content } = Layout;
 
 const ClientLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [currentTime, setCurrentTime] = useState<string | null>(null);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
+  useEffect(() => {
+    setCurrentTime(new Date().toLocaleTimeString());
+    const timer = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sidebar theme="dark" collapsed={collapsed} setCollapsed={setCollapsed} />
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={setCollapsed}
+        theme="dark"
+      >
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+      </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            {children}
-          </div>
+        <Header style={{ background: '#001529', padding: '0 16px', color: '#fff', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>User / Bill</div>
+          <div>{currentTime}</div>
+        </Header>
+        <Content style={{ margin: '16px', padding: '24px', background: colorBgContainer, borderRadius: borderRadiusLG }}>
+          {children}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          © {new Date().getFullYear()} Rishav Kundu
-        </Footer>
       </Layout>
     </Layout>
   );
